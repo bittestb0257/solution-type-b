@@ -8,23 +8,44 @@ public class Money {
 
 	
 	private int amount;
-	
+	Money tmp;
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		if(obj instanceof Money) {
+			Money tmpp = (Money)obj;
+			return amount == tmpp.amount;
+		}
+		else
+			return false;
+	}
 	public Money(int amount) {
+		this.amount = amount;
 	}
 
 	public Money add(Money money) {
-		return null;
+		tmp = new Money(this.amount + money.amount);
+		return tmp;
 	}
 
 	public Money minus(Money money) {
-		return null;
+		if(money.amount > this.amount)
+			tmp = new Money(money.amount - this.amount);
+		else
+			tmp = new Money(this.amount-money.amount);
+		return tmp;
 	}
 
 	public Money multiply(Money money) {
-		return null;
+		tmp = new Money(money.amount * this.amount);
+		return tmp;
 	}
 
 	public Money devide(Money money) {
-		return null;
+		if(money.amount > this.amount)
+			tmp = new Money(money.amount / this.amount);
+		else
+			tmp = new Money(this.amount/money.amount);
+		return tmp;
 	}
 }
