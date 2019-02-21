@@ -1,5 +1,6 @@
 package problem04;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 public class Main {
@@ -22,8 +23,17 @@ public class Main {
 	}
 	public static void start(ArrayList<String>game) {
 		Random generator = new Random();
+		Iterator<String> it = game.iterator();
+		int curIndex = 0;
 		int go = generator.nextInt(4)+1;
-		
+		while(it.hasNext()) {
+			curIndex = go-1;
+			if(game.get(curIndex) == "#")
+				start(makeGame());
+			else {				
+				go = generator.nextInt(4)+1;
+			}
+		}
 	}
 	public static void main(String[] args) {
 		start(makeGame());
